@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% block title%}Suggestion Page{%endblock%}
+{%block content%}
+{% load crispy_forms_tags%}
+<style>
+    #see{
+        width: 50%;
+    }
+</style>
+<div id ="see" class="container text-dark">
+    <fieldset class="form-group ">
+        <legend class="text-light text-center"> <b> Make A Suggestion </b></legend><hr>
+        <form method="POST" class="text-white" >
+            {% csrf_token%}
+            {{ forms|crispy }}
+        </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-light mt-4" type="submit">Submit</button>
+            </div>
+        </form><hr>
+        <div class="container mt-3 pb-3">
+            <small class="text-muted text-white">Do You Want To Go To The  <a class="ml-2 text-white" href="{% url 'home'%}">HomePage</a></small>
+        </div>
+</div>
+{% endblock%}

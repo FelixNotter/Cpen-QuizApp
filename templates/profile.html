@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+{% block title%}Profile Page{% endblock%}
+{%block content%}
+<div class="container bg-secondary text-dark  border border-1 border-radius-2" height="100">
+    <div class="row">
+        <div class="card-body  col-2" >
+            <div class="container">
+                <img class="rounded-circle account-img mt-3" src="{{user.profile.image.url}}" width="100" height="100" >
+                <div class="media-body  ">
+                    <h2 class="account-heading text-dark">{{ user.username }}</h2> 
+                    <p class="text-dark">{{user.email}}</p>
+                    
+                </div>
+            </div>
+         
+           </div>
+           <div class="col-2">
+            <p>Operating Systems</p>
+            <p class="text-light">{{user.profile.operate_score}}</p>
+           </div>
+           <div class="col-2">
+            <p>Numerical Methods</p>
+            <p class="text-light">{{user.profile.nummerical_score}}</p>
+           </div>
+           <div class="col-2">
+            <p>Signals and Systems</p>
+            <p class="text-light">{{user.profile.signals_score}}</p>
+           </div>
+           <div class="col-2">
+            <p>Computer Programming Fundamentals</p>
+            <p class="text-light">{{user.profile.programming_score}}</p>
+           </div>
+
+           <div class="container">
+            <a  class ="btn btn-outline-dark" href="{% url 'setting' %}">Change PFP</a>
+           </div>
+    </div>
+  
+
+</div>
+
+
+    
+{% endblock%}
+
+

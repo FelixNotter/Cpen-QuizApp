@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title%}Progress Page{% endblock%}
+{%block content%}
+
+<div class="container">
+    <h2 class="text-success text-center mb-4">LEADER BOARD</h2>
+<table class="table">
+   
+    <thead class="table-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Total Score</th>
+          </tr>
+    </thead>
+
+    <tbody class="table-group-divider text-light">
+        {% for profile in profiles %}
+        <tr>
+            <th scope="row">{{profile.0}}</th>
+            <td>{{profile.1.user.username}}</td>
+            <td>{{profile.1.user.email}}</td>
+            {% if profile.1.get_total_score > 0 %}
+            <td class="text-success">{{profile.1.get_total_score}}</td>
+            {% else %}
+            <td class="text-danger">{{profile.1.get_total_score}}</td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock%}

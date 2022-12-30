@@ -1,0 +1,83 @@
+{% extends 'base.html'%}
+
+{% load static %}
+{% block title%}Quiz Page{% endblock%}
+{%block content%}
+<div class="container ms-auto">
+    <div {% if has_questions %}id="basicUsage"{% endif %} class="text-light"></div>
+</div>
+
+<section>
+    {% if has_questions %}
+        <form action="" method="POST">
+            {%csrf_token%}
+            
+            <div class="container text-center">
+                <p class="text-info"><small>Click Here To Restart</small></p>
+                <input name="restart" type="submit" class="btn btn-outline-light ms-auto" value="Restart">
+            </div>
+        
+        </form>
+    
+        <div class="text-white pt-3 mb-5 text-left ps-5">
+        <h3>{{page_content.0.categories.name}}</h3>
+        </br>
+        {% for question in page_content%}
+            {{ forloop.counter0|add:page_content.start_index }}. {{question.question_text}}? <br>
+        
+            <form action="" method="POST" id="check">
+                {% csrf_token%}
+        
+            {% for answer in question.separate %}  
+                <p>
+                <input  type="radio"  name="option" value="{{answer}}" >
+                <label>{{answer}}</label>
+                </p>      
+                
+            {% endfor %}
+            <input type="hidden"  name="correct" id="correct" value="{{question.correct_answer}}">
+            <input type="hidden"  name="id" id="id" value="{{question.id}}">
+            <input type="hidden"  name="score" id="score" value="{{question.score}}">
+            
+
+            <input type="submit" name="check" class="btn btn-outline-light " value="Check">
+        
+        
+            </form>
+            <br>
+
+            <!-- {% if messages%}
+            {% for message in messages%}
+            <div class="text-success">
+                {{question.user_answer}}
+            </div>
+            {% endfor%}
+            {%endif%} -->
+
+            {% endfor%}
+            
+            <div class="container text-center">
+                {% if page_content.has_previous %}
+                    <a href="?page={{page_content.previous_page_number}}" type="submit" class="btn btn-outline-light ms-auto me-2">Previous</a>
+                {% endif %}
+                page {{page_content.number}} of {{page_content.paginator.num_pages}}
+                {% if page_content.has_next %}
+                    <a href="?page={{page_content.next_page_number}}" type="submit" class="btn btn-outline-light ms-2">Next</a>
+                {% else %}
+                    <a name="restart" type="submit" class="btn btn-outline-light ms-2">Submit</a>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <div class="container ms-auto">
+            <h3 class="text-light">No questions available...</h3>
+        </div>
+    {% endif %}
+
+</section>
+
+{% endblock%}
+
+{% block scripts %}
+<script src={% static 'js/quiz.js' %}></script>
+{% endblock scripts %}

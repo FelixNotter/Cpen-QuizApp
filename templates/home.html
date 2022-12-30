@@ -1,0 +1,114 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title%} Home Page{% endblock%}
+{%block content%}
+<!-- instruction -->
+<section>
+    <div class="container text-light text-center my-5 card-body bg-secondary border border-1">
+        <h2 class ="text-dark"> <i>Instructions</i> </h2>
+        <p>Below are a list of courses being taken this semester.Select the course you want to practice your concepts on.</p>
+        <p>1.This quiz app has a <a class="text-dark" href="{% url 'progress' %}">Progress Page</a>  that shows you graphs of the progress made based on the number of answers answered correctly for each course.
+            
+        </p>
+       <p>2.This helps users accurately measure the trajectory of their studies and are able to keep track of what needs to be studied more and what is lacking.</p>
+    <p>3.It also has a <a class="text-dark" href="{% url 'suggestion' %}">Suggestion Page</a> where you can make suggestions of new questions to be added to the app</p>
+    <p>4.If you answer a question incorrectly you will not be penalized but if you answer a question correctly you will be awarded.</p>
+    <p>5.You will only be penalized with 30 marks if you restart a test you are already taking. <span class="text-dark">(Losing 5 marks from every course)</span></p>
+    <p>6.Check the <a class="text-dark" href="{% url 'leader' %}">Leader Board</a> to see your ranking against your collegues in the quiz app  </p>
+    </div>
+
+</section>
+
+
+
+
+
+<!-- Course selection -->
+<section>   
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'methods.jpg'%}" class="card-img-top" >
+                <div class="card-body bg-secondary">
+                  <h5 class="card-title text-white">Numerical Methods</h5>
+                  <p class="card-text text-white">Test your Numerical Methods concepts HERE</p>
+                  <a href="{% url 'quiz-view' 'Numerical Methods' %}" class="btn btn-success">Numerical Methods</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'arch.jpg'%}" class="card-img-top" >
+                <div class="card-body bg-secondary">
+                  <h5 class="card-title text-white">Computer Architecture</h5>
+                  <p class="card-text text-white">Test your Computer Architecture concepts HERE</p>
+                  <a href="{% url 'quiz-view' 'Computer Architecture' %}" class="btn btn-success">Computer Architecture</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'signals.jpg'%}" class="card-img-top" >
+                <div class="card-body bg-secondary">
+                  <h5 class="card-title text-white">Signals And Systems</h5>
+                  <p class="card-text text-white">Test your signals and systems concepts HERE</p>
+                  <a href="{% url 'quiz-view' 'Signals and Systems' %}" class="btn btn-success">Signals And Systems</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="{% static 'networrk.jpg'%}" style ="height: 15rem;" class="card-img-top" alt="...">
+                <div class="card-body bg-secondary">
+                  <h5 class="card-title text-white">Computer Networks</h5>
+                  <p class="card-text text-white">Test your Computer Networks concepts HERE</p>
+                  <a href="{% url 'quiz-view' 'Computer Networks' %}" class="btn btn-success">Computer Networks</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;" >
+                <img style ="height: 15rem;"src="{% static 'program.jpg'%}" class="card-img-top">
+                <div class="card-body bg-secondary">
+                  <h5 class="card-title text-white">Programming Fundamentals</h5>
+                  <p class="card-text text-white">Test your Programming Fundamentals concepts HERE</p>
+                  <a href="{% url 'quiz-view' 'Programming Fundamentals' %}" class="btn btn-success">Programming Fundamentals</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img style="height:15rem;" src="{% static 'os.jpeg'%}" class="card-img-top" alt="...">
+                <div class="card-body bg-secondary">
+                  <h5 class="card-title text-white">Operating Systems</h5>
+                  <p class="card-text text-white">Test your Operating Systems concepts HERE</p>
+                  <a href="{% url 'quiz-view' 'Operating Systems' %}" class="btn btn-success">Operating Systems</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        </div>
+</div>
+</section>
+<!-- Best Practices -->
+<section>
+    <div class="container text-light text-center my-5 card-body bg-secondary border border-1">
+        <h2 class ="text-dark"> <i>Best Practices</i> </h2>
+        <p> <b><h3>Here are some tips on how to efficiently use this app for studies</h3> </b> </p>
+        <p>1.Make Sure you have Pen and Paper by you to take notes of questions you do not understand.</p>
+        <p>2.Search for well explained solutions to questions you had wrong or didn't strongly understand <a class="btn btn-outline-dark ms-2" href="https://chat.openai.com">here</a> </p>
+        <p>3.Also don't forget to use <a class="btn btn-outline-danger ms-2" href="https://youtube.com">Youtube</a> to strength your understanding</p>
+    </div>
+
+</section>
+{% endblock%}

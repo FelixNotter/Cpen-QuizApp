@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title%}Progress Page{% endblock%}
+{% load crispy_forms_tags%}
+{%block content%}
+<div class="container text-center">
+
+<legend class="">Log In</legend><hr>
+<form method="POST" class="text-white" >
+    {% csrf_token%}
+    {{ forms|crispy }}
+</fieldset>
+    <div class="form-group">
+        <button class="btn btn-outline-light mt-4" type="submit">Upload new Profile Picture</button>
+    </div>
+</form><hr>
+</div>
+
+{% endblock%}
